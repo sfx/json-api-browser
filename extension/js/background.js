@@ -194,17 +194,17 @@
         t_true: getSpanBoth('true','bl'),
         t_false: getSpanBoth('false','bl'),
 
-        t_oBrace: getSpanBoth('{','b'),
-        t_cBrace: getSpanBoth('}','b'),
-        t_oBracket: getSpanBoth('[','b'),
-        t_cBracket: getSpanBoth(']','b'),
+        t_oBrace: getSpanBoth('\u00A0','b'),
+        t_cBrace: getSpanBoth('\u00A0','b'),
+        t_oBracket: getSpanBoth('[', 'g'),
+        t_cBracket: getSpanBoth(']', 'g'),
 
         t_ellipsis: getSpanClass('ell'),
         t_blockInner: getSpanClass('blockInner'),
 
-        t_colonAndSpace: document.createTextNode(':\u00A0'),
-        t_commaText: document.createTextNode(','),
-        t_dblqText: document.createTextNode('"')
+        t_colonAndSpace: document.createTextNode('\u00A0'),
+        t_commaText: document.createTextNode(''),
+        t_dblqText: document.createTextNode('')
       } ;
 
   // Core recursive DOM-building function
