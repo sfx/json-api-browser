@@ -208,6 +208,7 @@
       } ;
 
   templatesObj.t_key.style.fontWeight = "bold";
+  templatesObj.t_key.style.marginRight = "1em";
 
   // Core recursive DOM-building function
     function getKvovDOM(value, keyName) {
