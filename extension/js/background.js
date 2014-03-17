@@ -207,6 +207,8 @@
         t_dblqText: document.createTextNode('')
       } ;
 
+  templatesObj.t_key.style.fontWeight = "bold";
+
   // Core recursive DOM-building function
     function getKvovDOM(value, keyName) {
       var type,
