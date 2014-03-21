@@ -150,11 +150,15 @@
               || keyName === 'href');
     }
 
-    // copied from http://stackoverflow.com/a/196991/7012
-    function toTitleCase(str) {
-        return str.replace(/\w\S*/g, function(txt) {
-            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-        });
+    function stringToTitleCase(str) {
+        if (str === 'url' || str === 'href') {
+          return str;
+        } else {
+          // copied from http://stackoverflow.com/a/196991/7012
+          return str.replace(/\w\S*/g, function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          });
+        }
     }
 
     function stringContainsAnyOf(str, values) {
@@ -280,7 +284,7 @@
             keyText = JSON.stringify(keyName);
             keyText = keyText.slice(1,-1); // remove quotes
             keyText = keyText.replace('_', ' ');
-            keyText = toTitleCase(keyText);
+            keyText = stringToTitleCase(keyText);
 
             keySpan.textContent = keyText;
 
