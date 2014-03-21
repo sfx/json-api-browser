@@ -150,6 +150,13 @@
               || keyName === 'href');
     }
 
+    // copied from http://stackoverflow.com/a/196991/7012
+    function toTitleCase(str) {
+        return str.replace(/\w\S*/g, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        });
+    }
+
     // function spin(seconds) {
     //   // spin - Hog the CPU for the specified number of seconds
     //   // (for simulating long processing times in development)
@@ -263,6 +270,7 @@
             keyText = JSON.stringify(keyName);
             keyText = keyText.slice(1,-1); // remove quotes
             keyText = keyText.replace('_', ' ');
+            keyText = toTitleCase(keyText);
 
             keySpan.textContent = keyText;
 
