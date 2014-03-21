@@ -157,6 +157,16 @@
         });
     }
 
+    function stringContainsAnyOf(str, values) {
+      for (var i = 0, v; v = values[i]; i++) {
+        if (str.indexOf(v) != -1) {
+          return true;
+        }
+      }
+
+      return false;
+    }
+
     // function spin(seconds) {
     //   // spin - Hog the CPU for the specified number of seconds
     //   // (for simulating long processing times in development)
@@ -300,6 +310,11 @@
                 var innerStringA = document.createElement('A') ;
                 innerStringA.href = value ;
                 innerStringA.innerText = escapedString ;
+
+                if (stringContainsAnyOf(value, ['mp3', 'aac', 'mp4', 'jpg', 'png'])) {
+                  innerStringA.target = "_blank";
+                }
+
                 innerStringEl.appendChild(innerStringA) ;
               }
               else {
