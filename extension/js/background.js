@@ -219,6 +219,7 @@
           templates = templatesObj, // bring into scope for tiny speed boost
           objKey,
           keySpan,
+          keyText,
           valueElement
       ;
 
@@ -258,7 +259,13 @@
             kvov.classList.add('objProp') ;
           // Create a span for the key name
             keySpan = templates.t_key.cloneNode(false) ;
-            keySpan.textContent = JSON.stringify(keyName).slice(1,-1) ; // remove quotes
+
+            keyText = JSON.stringify(keyName);
+            keyText = keyText.slice(1,-1); // remove quotes
+            keyText = keyText.replace('_', ' ');
+
+            keySpan.textContent = keyText;
+
           // Add it to kvov, with quote marks
             kvov.appendChild(templates.t_dblqText.cloneNode(false)) ;
             kvov.appendChild( keySpan ) ;
