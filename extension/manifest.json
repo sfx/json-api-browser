@@ -1,9 +1,9 @@
 {
-  "name": "JSON Formatter",
-  "version": "0.5.7",
+  "name": "JSON API Browser",
+  "version": "0.6.0",
   "manifest_version": 2,
-  "description": "Makes JSON easy to read. Open source.",
-  "homepage_url": "https://github.com/callumlocke/json-formatter",
+  "description": "Browse JSON APIs with beautiful and readable presentation.",
+  "homepage_url": "https://github.com/sfx/json-formatter",
   "minimum_chrome_version": "21",
   "icons": {
        "128": "icons/128.png",
