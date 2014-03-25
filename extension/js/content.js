@@ -188,13 +188,29 @@
           jfContent.innerHTML = msg[1] ;
 
           // collapse all the objects in jfContent;
-
-          // get an array of all expander nodes except the first
-          var expanders = Array.prototype.slice.call(jfContent.getElementsByClassName('e'), 1);
           var startCollapseTime = Date.now();
-          expanders.forEach(function(expander) {
-            collapse([expander.parentNode]);
+
+          // get an array of all expander nodes
+          var expanders = Array.prototype.slice.call(jfContent.getElementsByClassName('e'));
+
+          /* Do a “quick-collapse” of all expanders except the first and second.
+           * * A “quick-collapse” means just adding the `collapsed` CSS class,
+           *   which does everything we need; the only thing it doesn’t do is add
+           *   the count of children of the collapsed object, which it turns out is
+           *   very slow to do on every object in the page (for large JSON objects).
+           * * We don’t want to collapse the first expander because then the default state
+           *   would be almost a blank page — the user would always go and expand the first
+           *   expander. That would be silly.
+           * * We don’t want to “quick-collapse” the second expander because we’ll do
+           *   a “full” collapse below, so that the count of all of its children is displayed.
+           *   This is just useful for getting a sense of scale of the “main” key of the
+           *   top-level object.
+           */
+          expanders.slice(2).forEach(function(expander) {
+            expander.parentNode.classList.add('collapsed');
           });
+          // collapse the second expander using the full collapse so that the count of its children is displayed
+          collapse([expanders[1].parentNode]);
           var endCollapseTime = Date.now();
           console.log("It took", endCollapseTime - startCollapseTime, "ms to collapse all objects");
 
