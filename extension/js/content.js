@@ -180,9 +180,27 @@
           break ;
             
         case 'FORMATTED' :
+          // temporarily hide jfContent
+          jfContent.style.display = "hidden";
+          console.log("got formatted HTML");
+
           // Insert HTML content
-            jfContent.innerHTML = msg[1] ;
-          
+          jfContent.innerHTML = msg[1] ;
+
+          // collapse all the objects in jfContent;
+
+          // get an array of all expander nodes except the first
+          var expanders = Array.prototype.slice.call(jfContent.getElementsByClassName('e'), 1);
+          var startCollapseTime = Date.now();
+          expanders.forEach(function(expander) {
+            collapse([expander.parentNode]);
+          });
+          var endCollapseTime = Date.now();
+          console.log("It took", endCollapseTime - startCollapseTime, "ms to collapse all objects");
+
+          // show jfContent
+          jfContent.style.display = "block";
+
           displayedFormattedJsonTime = Date.now() ;
 
           // Log times
